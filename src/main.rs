@@ -93,7 +93,7 @@ mod fpcomplete {
 
         impl<A> Functor for Option<A> {
             type Unwrapped = A;
-            /// Wrapped<B> can be of different type than Unwrapped
+            /// B in `Wrapped<B>` can be of different type than Unwrapped
             type Wrapped<B> = Option<B>;
 
             fn map<F: FnMut(A) -> B, B>(self, mut f: F) -> Option<B> {
@@ -105,7 +105,7 @@ mod fpcomplete {
         }
 
         fn ping(_a: i32) -> String {
-            /// Wrapped<B> can be of different type than Unwrapped
+            /// B in `Wrapped<B>` can be of different type than Unwrapped
             "fixed".into()
         }
 
