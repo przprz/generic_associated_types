@@ -1,6 +1,7 @@
 #![feature(generic_associated_types)]
 
 mod gat_on_nightly {
+    /// https://www.reddit.com/r/rust/comments/k4vzvp/gats_on_nightly/
     /// https://play.rust-lang.org/?version=nightly&mode=debug&edition=2018&gist=61caef82814783feadc33a3b865fe8b3
 
     trait Monad /* : Applicative (for pure/return, doesn't matter for this example) */ {
@@ -92,6 +93,7 @@ mod fpcomplete {
 
         impl<A> Functor for Option<A> {
             type Unwrapped = A;
+            /// Wrapped<B> can be of different type than Unwrapped
             type Wrapped<B> = Option<B>;
 
             fn map<F: FnMut(A) -> B, B>(self, mut f: F) -> Option<B> {
@@ -103,7 +105,8 @@ mod fpcomplete {
         }
 
         fn ping(_a: i32) -> String {
-            return "fixed".into();
+            /// Wrapped<B> can be of different type than Unwrapped
+            "fixed".into()
         }
 
         #[test]
